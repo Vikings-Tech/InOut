@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "282647567142",
+    "project_id": "gamersgalaxy-4748b",
+    "storage_bucket": "gamersgalaxy-4748b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:282647567142:android:ad1091b8301cce7e6a7fe7",
+        "android_client_info": {
+          "package_name": "com.vikings.gg"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "282647567142-on1cu83kr5t71egqv0ef4l09to9832t9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC9NoIjyYwXAx_LuqIFsI5zfCE0iSivqvY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "282647567142-on1cu83kr5t71egqv0ef4l09to9832t9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
