@@ -23,10 +23,21 @@ public class ASRetrieveUserInfo : MonoBehaviour
         FirebaseApp.DefaultInstance.SetEditorDatabaseUrl("https://gamersgalaxy-4748b-default-rtdb.firebaseio.com/");
         reference = FirebaseDatabase.DefaultInstance.RootReference;
         user = FirebaseAuth.DefaultInstance;
+        StartCoroutine(GetInfo());
+    }
+
+    IEnumerator GetInfo()
+    {
+        if (user.CurrentUser == null)
+        {
+            yield return new WaitForSeconds(2);
+            Debug.Log("usernull");
+            
+        }
         idTextfield.text = user.CurrentUser.UserId;
         RetrieveData(user.CurrentUser.UserId);
     }
-
+    
     public void RetrieveData(string userUID)
     {
         reference.Child("User_Info").Child(userUID)
@@ -47,11 +58,5 @@ public class ASRetrieveUserInfo : MonoBehaviour
         
     }
     
-
     
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }
