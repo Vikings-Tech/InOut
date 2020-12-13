@@ -49,6 +49,7 @@ public class Launcher : MonoBehaviourPunCallbacks
     {
         Debug.Log("Connected to Master");
         PhotonNetwork.JoinRandomRoom();
+        PhotonNetwork.GameVersion = gameVersion;
     }
 
     public override void OnDisconnected(DisconnectCause cause)

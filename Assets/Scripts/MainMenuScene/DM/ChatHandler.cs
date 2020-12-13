@@ -28,7 +28,8 @@ public class ChatHandler : MonoBehaviour
     {
         database.PostMessage(new DMMessage(senderName,message.text,senderUID,senderAvatar),()=> Debug.Log("Message was sent")
         ,Debug.Log);
-        
+        message.text = "";
+
     }
 
     private void InstantiateMessage(DMMessage message)
@@ -38,6 +39,7 @@ public class ChatHandler : MonoBehaviour
         newMessage.GetComponent<Text>().text = $"{message.message}";
         Debug.Log(message.senderName);
         Debug.Log(senderUID);
+        newMessage.AddComponent<DMBack>();
         if (message.userUID == senderUID)
         {
             Debug.Log("Yes");

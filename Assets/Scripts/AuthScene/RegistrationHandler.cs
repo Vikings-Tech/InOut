@@ -1,9 +1,9 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using Firebase;
 using UnityEngine;
 using UnityEngine.UI;
 using Firebase.Auth;
+using Firebase.Database;
+using Firebase.Unity.Editor;
 using Proyecto26;
 public class RegistrationHandler : MonoBehaviour
 {
@@ -25,10 +25,15 @@ public class RegistrationHandler : MonoBehaviour
 
     private AuthStateHandler _authStateHandler;
     public static bool RegistrationComplete = false;
-
+    
+    private DatabaseReference reference;
+    private FirebaseAuth user;
     private void Start()
     {
         _authStateHandler = FindObjectOfType<AuthStateHandler>();
+        FirebaseApp.DefaultInstance.SetEditorDatabaseUrl("https://gamersgalaxy-4748b-default-rtdb.firebaseio.com/");
+        reference = FirebaseDatabase.DefaultInstance.RootReference;
+        user = FirebaseAuth.DefaultInstance;
     }
 
     public void RegisterUser()
@@ -77,7 +82,7 @@ public class RegistrationHandler : MonoBehaviour
         Name = nameField.text;
 
 
-
+        Invoke("AddSwipePeople",2);
         Invoke("PostToDatabase", 3);
         GoToAvatarSelection();
     }
@@ -89,15 +94,34 @@ public class RegistrationHandler : MonoBehaviour
         msg = errorCode.ToString(); 
         print(msg);
     }
-    
+
+    public void AddSwipePeople()
+    {
+        reference.Child("User_Info")
+            
+            .GetValueAsync().ContinueWith(task => {
+                if (task.IsFaulted) {
+                    Debug.LogError(task.Exception);
+                }
+                else if (task.IsCompleted) {
+                    DataSnapshot snapshot = task.Result;
+                    
+                    reference.Child("Swipe_List").Child(user.CurrentUser.UserId)
+                        .SetRawJsonValueAsync(snapshot.GetRawJsonValue());
+                }
+            });
+        
+    }
     public void PostToDatabase()
     {
         Debug.Log("yes");
         RegistrationInfo user = new RegistrationInfo();
         RestClient.Put(firebaseAdd+"User_Info/"+_authStateHandler.user.UserId+".json",user);
         
-        
+
     }
+    
+    
 
     public void GoToAvatarSelection()
     {

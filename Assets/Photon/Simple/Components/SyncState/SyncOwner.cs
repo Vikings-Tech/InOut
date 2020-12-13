@@ -205,7 +205,7 @@ namespace Photon.Pun.Simple
         {
             //if (newOwnerId != photonView.OwnerActorNr)
             {
-                Player pendingOwner;
+                Realtime.Player pendingOwner;
                 PhotonNetwork.CurrentRoom.Players.TryGetValue(pendingOwnerId, out pendingOwner);
 
                 //Debug.LogError(Time.time + " SYNC_OWN Apply newOwner? " + (pendingOwner == null ? "null" : pendingOwnerId.ToString()));

@@ -58,6 +58,9 @@ namespace Photon.Pun.Simple
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
         public static void EnsureExistsInScene()
         {
+            if (!TickEngineSettings.Single.enableTickEngine)
+                return;
+
             /// Some basic singleton enforcement
             GameObject go = null;
 
@@ -103,7 +106,7 @@ namespace Photon.Pun.Simple
 
             if (single && single != this)
             {
-                /// If a singleton already exists, destroy the old one - TODO: Not sure about this behaviour yet. Allows for settings changes with scene changes.
+                /// If a singleton already exists, destroy the old one - TODO: Not sure about this behavior yet. Allows for settings changes with scene changes.
                 Destroy(single);
             }
 
@@ -127,11 +130,13 @@ namespace Photon.Pun.Simple
 
         private void FixedUpdate()
         {
+            /// Disable Simple if no NetObjects exist.
+            if (NetObject.activeControlledNetObjs.Count == 0 && NetObject.activeUncontrolledNetObjs.Count == 0)
+                return;
 
-            //#if SNS_DEV
             if (!TickEngineSettings.single.enableTickEngine)
                 return;
-            //#endif
+
             /// Halt everything if networking isn't ready.
             bool readyToSend = NetMsgSends.ReadyToSend;
             if (!readyToSend)
@@ -166,6 +171,9 @@ namespace Photon.Pun.Simple
 
         void Update()
         {
+            /// Disable Simple if no NetObjects exist.
+            if (NetObject.activeControlledNetObjs.Count == 0 && NetObject.activeUncontrolledNetObjs.Count == 0)
+                return;
 
             if (!TickEngineSettings.single.enableTickEngine)
                 return;

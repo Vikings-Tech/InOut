@@ -27,28 +27,30 @@ public class AcceptDenyRequest : MonoBehaviour
             var message2JSON = StringSerializationAPI.Serialize(typeof(FriendInfo),
                 new FriendInfo(ASRetrieveUserInfo.currentUID, ASRetrieveUserInfo.userName,
                     ASRetrieveUserInfo.currentAvIndex));
-            reference.Child("Friends").Child(user.CurrentUser.UserId).Child(requestID).Push().SetRawJsonValueAsync(messageJSON).ContinueWith(task =>
+            reference.Child("Friends").Child(user.CurrentUser.UserId).Child("Accepted").Push().SetRawJsonValueAsync(messageJSON).ContinueWith(task =>
             {
                 if (task.IsCanceled || task.IsFaulted) fallback(task.Exception);
                 else callback();
             });
-            reference.Child("Friends").Child(requestID).Child(user.CurrentUser.UserId).Push().SetRawJsonValueAsync(message2JSON).ContinueWith(task =>
+            reference.Child("Friends").Child(requestID).Child("Accepted").Push().SetRawJsonValueAsync(message2JSON).ContinueWith(task =>
             {
                 if (task.IsCanceled || task.IsFaulted) fallback(task.Exception);
                 else callback();
             });
             
-            reference.Child("Friends").Child(user.CurrentUser.UserId).Child("Requests").Child(requestID).RemoveValueAsync().ContinueWith(task =>
+            reference.Child("Friends").Child(user.CurrentUser.UserId).Child("Requests").Child(requestID).SetValueAsync(null).ContinueWith(task =>
             {
                 if (task.IsCanceled || task.IsFaulted) fallback(task.Exception);
                 else callback();
             });
         
     }
+
+    
     
     private void Reject(Action callback, Action<AggregateException> fallback)
     {
-        reference.Child("Friends").Child(user.CurrentUser.UserId).Child("Requests").Child(requestID).RemoveValueAsync().ContinueWith(task =>
+        reference.Child("Friends").Child(user.CurrentUser.UserId).Child("Requests").Child(requestID).SetValueAsync(null).ContinueWith(task =>
         {
             if (task.IsCanceled || task.IsFaulted) fallback(task.Exception);
             else callback();
@@ -70,6 +72,7 @@ public class AcceptDenyRequest : MonoBehaviour
     public void RequestRejected()
     {
         Reject(DestroyThis,Debug.Log);
+        DestroyThis();
         Debug.Log("rejected");
     }
     

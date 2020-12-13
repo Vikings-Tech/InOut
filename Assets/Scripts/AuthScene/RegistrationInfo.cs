@@ -10,6 +10,7 @@ public class RegistrationInfo
     public string Email;
     public int AvatarIndex;
     public string Bio;
+    public string userUID;
     
     public RegistrationInfo()
     {

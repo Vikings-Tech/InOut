@@ -332,7 +332,6 @@ namespace Photon.Pun.Simple
                 }
                 else
                 {
-                    Debug.LogWarning("Reactor partially consumed.");
                     consumption = Consumption.Partial;
                 }
 

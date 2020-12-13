@@ -1,4 +1,4 @@
-﻿// C// ---------------------------------------------------------------------------------------------
+﻿// ---------------------------------------------------------------------------------------------
 // <copyright>PhotonNetwork Framework for Unity - Copyright (C) 2020 Exit Games GmbH</copyright>
 // <author>developer@exitgames.com</author>
 // ---------------------------------------------------------------------------------------------
@@ -49,7 +49,7 @@ namespace Photon.Pun.Simple
         [SerializeField]
         [HideInInspector]
         [Tooltip("Enabling this will tell the serializer to completely exclude this net object from serialization if none of its content has changed. " +
-            "While this will remove heartbeat data, It may also produce undeseriable extrapolation and buffer resizing behavior, as recieving clients will see this as a network failure.")]
+            "While this will remove heartbeat data, It may also produce undesirable extrapolation and buffer resizing behavior, as receiving clients will see this as a network failure.")]
         protected bool skipWhenEmpty = false;
         public bool SkipWhenEmpty { get { return skipWhenEmpty; } }
 
@@ -332,7 +332,7 @@ namespace Photon.Pun.Simple
         #region PUN Callbacks
 
 
-        public void OnOwnerChange(Player newOwner, Player previousOwner)
+        public void OnOwnerChange(Realtime.Player newOwner, Realtime.Player previousOwner)
         {
 
 #if UNITY_EDITOR
@@ -345,7 +345,7 @@ namespace Photon.Pun.Simple
             OnChangeAuthority(photonView.IsMine, true);
         }
 
-        public void OnControllerChange(Player newController, Player previousController)
+        public void OnControllerChange(Realtime.Player newController, Realtime.Player previousController)
         {
 
 #if UNITY_EDITOR
@@ -399,7 +399,7 @@ namespace Photon.Pun.Simple
 
         /// <summary>
         /// Adds and Removes this NetObject from the active/owned list based on IsMine and ActiveAndEnabled.
-        /// Effectively caches which netObjects are part of serialiation and such. Call this any time a change to enabled or owners change.
+        /// Effectively caches which netObjects are part of serialization and such. Call this any time a change to enabled or owners change.
         /// </summary>
         private void DetermineActiveAndControlled(bool amController)
         {
@@ -1316,6 +1316,11 @@ namespace Photon.Pun.Simple
             }
 
             return true;
+        }
+
+        public void OnFriendListUpdate(List<Realtime.FriendInfo> friendList)
+        {
+            throw new System.NotImplementedException();
         }
 
         #endregion

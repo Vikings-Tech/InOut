@@ -37,6 +37,10 @@ namespace Photon.Pun.Simple
             if (!TickEngineSettings.single.enableTickEngine)
                 return;
 
+            /// Disable Simple if no NetObjects exist.
+            if (NetObject.activeControlledNetObjs.Count == 0 && NetObject.activeUncontrolledNetObjs.Count == 0)
+                return;
+
             NetMasterCallbacks.OnPreSimulateCallbacks(NetMaster.CurrentFrameId, NetMaster.CurrentSubFrameId);
 
         }
@@ -46,12 +50,20 @@ namespace Photon.Pun.Simple
             if (!TickEngineSettings.single.enableTickEngine)
                 return;
 
+            /// Disable Simple if no NetObjects exist.
+            if (NetObject.activeControlledNetObjs.Count == 0 && NetObject.activeUncontrolledNetObjs.Count == 0)
+                return;
+
             NetMasterCallbacks.OnPostUpdateCallbacks();
         }
 
         private void LateUpdate()
         {
             if (!TickEngineSettings.single.enableTickEngine)
+                return;
+
+            /// Disable Simple if no NetObjects exist.
+            if (NetObject.activeControlledNetObjs.Count == 0 && NetObject.activeUncontrolledNetObjs.Count == 0)
                 return;
 
             NetMasterCallbacks.OnPostLateUpdateCallbacks();

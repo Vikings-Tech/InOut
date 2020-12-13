@@ -5,7 +5,7 @@ using Firebase.Database;
 using Firebase.Auth;
 using Firebase;
 using Firebase.Unity.Editor;
-
+using UnityEngine.UI;
 public class ASRetrieveUserInfo : MonoBehaviour
 {   private DatabaseReference reference;
     private FirebaseAuth user;
@@ -13,13 +13,17 @@ public class ASRetrieveUserInfo : MonoBehaviour
     public static string currentUID;
     public static int currentAvIndex;
     public static string userName;
+
     
+
+    public InputField idTextfield;
     // Start is called before the first frame update
     void Awake()
     {
         FirebaseApp.DefaultInstance.SetEditorDatabaseUrl("https://gamersgalaxy-4748b-default-rtdb.firebaseio.com/");
         reference = FirebaseDatabase.DefaultInstance.RootReference;
         user = FirebaseAuth.DefaultInstance;
+        idTextfield.text = user.CurrentUser.UserId;
         RetrieveData(user.CurrentUser.UserId);
     }
 

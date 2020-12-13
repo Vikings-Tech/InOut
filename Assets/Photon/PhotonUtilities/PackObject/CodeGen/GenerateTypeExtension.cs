@@ -48,7 +48,7 @@ namespace Photon.Compression.Internal
 		static bool hasSnapCallbacks;
 
 		private static string serializationFlags = typeof(SerializationFlags).Name;
-		private static string serializationFlagsLine1 = serializationFlags + " flags = " + serializationFlags + "." + System.Enum.GetName(typeof(SerializationFlags), SerializationFlags.None) + ";" + Environment.NewLine;
+		private static string serializationFlagsLine1 = serializationFlags + " flags = " + serializationFlags + "." + System.Enum.GetName(typeof(SerializationFlags), SerializationFlags.None) + ";\n";
 
 		public static StringBuilder GeneratePackCode(this Type objType, TypeInfo objTypeInfo, PackObjectAttribute pObjAttr)
 		{
@@ -317,7 +317,7 @@ namespace Photon.Compression.Internal
 					{
 						string stdArgsPack = "ref FastBitMask128 mask, ref int maskOffset, byte[] buffer, ref int bitposition, int frameId, SerializationFlags writeFlags";
 						string stdArgsUPck = "ref FastBitMask128 mask, ref FastBitMask128 isCompleteMask, ref int maskOffset, byte[] buffer, ref int bitposition, int frameId, SerializationFlags writeFlags";
-						string prevFrameCast = "var prev = " + PREV_FRM_NAME + " as " + PACKFRM_PREFIX + objTypeName + ";" + Environment.NewLine;
+						string prevFrameCast = "var prev = " + PREV_FRM_NAME + " as " + PACKFRM_PREFIX + objTypeName + ";\n";
 
 						if (isStruct)
 						{
@@ -1383,7 +1383,7 @@ namespace Photon.Compression.Internal
 
 		private static StringBuilder EOL(this StringBuilder sb)
 		{
-			return sb.Append(Environment.NewLine);
+			return sb.Append("\n");
 		}
 
 		#endregion

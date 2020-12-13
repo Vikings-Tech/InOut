@@ -52,8 +52,8 @@ namespace Photon.Pun.Simple
             //if (deferToISyncContact)
             //    return Consumption.None;
 
-            if (contactEvent.contactType == ContactType.Hitscan)
-                Debug.Log(Time.time + " SCAN " + name + " OnContactEvent " + contactEvent);
+            //if (contactEvent.contactType == ContactType.Hitscan)
+            //    Debug.Log(Time.time + " SCAN " + name + " OnContactEvent " + contactEvent);
 
             var contactType = contactEvent.contactType;
 

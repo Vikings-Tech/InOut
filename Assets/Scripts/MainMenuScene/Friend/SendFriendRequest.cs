@@ -30,7 +30,7 @@ public class SendFriendRequest : MonoBehaviour
     public void SendRequest(string receiver,FriendInfo selfInfo, Action callback, Action<AggregateException> fallback)
     {
         var messageJSON = StringSerializationAPI.Serialize(typeof(FriendInfo), selfInfo);
-        reference.Child("Friends").Child(receiver).Child("Requests").Push().SetRawJsonValueAsync(messageJSON).ContinueWith(task =>
+        reference.Child("Friends").Child(receiver).Child("Requests").Child(selfInfo.UserUID).SetRawJsonValueAsync(messageJSON).ContinueWith(task =>
         {
             if (task.IsCanceled || task.IsFaulted) fallback(task.Exception);
             else callback();

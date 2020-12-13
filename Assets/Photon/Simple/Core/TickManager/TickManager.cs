@@ -17,6 +17,10 @@ namespace Photon.Pun.Simple.Internal
 		public readonly static Dictionary<int, ConnectionTickOffsets> perConnOffsets = new Dictionary<int, ConnectionTickOffsets>();
 		public readonly static List<int> connections = new List<int>();
 
+        /// <summary>
+        /// Use the 'Single' property instead of this single field if you are uncertain if the instance has been set yet. 
+        /// This field is exposed to allow a slightly faster alternative to the Single property, when you can be certain the singleton has been set.
+        /// </summary>
 		public static TickManager single;
 
 		/// <summary>
@@ -25,7 +29,7 @@ namespace Photon.Pun.Simple.Internal
 		public static bool needToSendInitialForNewConn;
 
 
-		[RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
+		[RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.AfterSceneLoad)]
 		public static void Bootstrap()
 		{
 			single = new TickManager();
@@ -35,19 +39,19 @@ namespace Photon.Pun.Simple.Internal
 
         #region PUN Room Callbacks
 
-        public void OnPlayerEnteredRoom(Player newPlayer)
+        public void OnPlayerEnteredRoom(Realtime.Player newPlayer)
         {
             AddConnection(newPlayer.ActorNumber);
         }
 
-        public void OnPlayerLeftRoom(Player otherPlayer)
+        public void OnPlayerLeftRoom(Realtime.Player otherPlayer)
         {
             RemoveConnection(otherPlayer.ActorNumber);
         }
 
         public void OnRoomPropertiesUpdate(Hashtable propertiesThatChanged) { }
-        public void OnPlayerPropertiesUpdate(Player targetPlayer, Hashtable changedProps) { }
-        public void OnMasterClientSwitched(Player newMasterClient) { }
+        public void OnPlayerPropertiesUpdate(Realtime.Player targetPlayer, Hashtable changedProps) { }
+        public void OnMasterClientSwitched(Realtime.Player newMasterClient) { }
 
         #endregion
 
@@ -210,7 +214,7 @@ namespace Photon.Pun.Simple.Internal
 			if (localToOrigin < 0)
 				localToOrigin += frameCount;
 
-			/// Curently local and origin are the same.
+			/// Currently local and origin are the same.
 			/// TODO: Pool these
 			offsets = new ConnectionTickOffsets(connId, originToLocal, localToOrigin);
 

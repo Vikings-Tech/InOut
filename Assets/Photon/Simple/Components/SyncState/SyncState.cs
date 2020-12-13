@@ -629,7 +629,7 @@ namespace Photon.Pun.Simple
 
             if (mountView)
             {
-                Player pendingOwner = mountView.Owner;
+                Realtime.Player pendingOwner = mountView.Owner;
                 int pendingOwnerId = pendingOwner == null ? 0 : pendingOwner.ActorNumber;
 
                 //photonView.SetOwnerInternal(pendingOwner, pendingOwnerId);

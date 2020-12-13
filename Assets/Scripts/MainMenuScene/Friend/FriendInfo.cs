@@ -7,7 +7,6 @@ public class FriendInfo
     public string UserUID;
     public string Username;
     public int AvatarIndex;
-
     public FriendInfo(string UserUID, string Username, int AvatarIndex)
     {
         this.UserUID = UserUID;

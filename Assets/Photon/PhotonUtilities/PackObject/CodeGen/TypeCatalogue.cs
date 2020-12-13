@@ -63,7 +63,6 @@ namespace Photon.Compression.Internal
         //	}
         //}
 
-
         private static bool rebuilding;
         /// Delete any generated extensions that are throwing up errors.
         private static void CompileFinished(string arg1, CompilerMessage[] arg2)
@@ -81,6 +80,9 @@ namespace Photon.Compression.Internal
                 // Check if this is a codegen file by its path and having Pack_ in the name.
                 if (arg.type == CompilerMessageType.Error && arg.file.Contains(GENERATED_SUBFOLDER) && arg.file.Contains("Pack_"))
                 {
+                    // TEST - added to delete permanent loop due to users moving folders around.
+                    File.Delete(arg.file);
+
                     // Search entire project for codegen that doesn't belong if we detected a name collision (user moved old folder most likely)
                     if (!cleanOrphanCodegen && arg.message.Contains("already contains"))
                     {
@@ -160,7 +162,8 @@ namespace Photon.Compression.Internal
                 return;
             }
 
-            Debug.Log("Rescanning assembly for [PackObject] changes.");
+            Debug.Log("Rescanning assembly for [PackObject] and [SyncVar] changes. " +
+                "If you are not using Simple SyncVars, this scan can be disabled by un-checking 'Auto Generate' in PackObjectSettings.");
             rescanPending = true;
 
         }

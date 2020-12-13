@@ -19,7 +19,7 @@ namespace Photon.Compression
 	/// The object must contain a MeshRenderer in order to get the bounds.
 	/// </summary>
 	//[HelpURL("https://docs.google.com/document/d/1nPWGC_2xa6t4f9P0sI7wAe4osrg4UP0n_9BVYnr5dkQ/edit#heading=h.4n2gizaw79m0")]
-	[AddComponentMenu("Transform Crusher/World Bounds")]
+	//[AddComponentMenu("Transform Crusher/World Bounds")]
 	[ExecuteInEditMode]
 	public class WorldBounds : MonoBehaviour
 	{
@@ -45,7 +45,7 @@ namespace Photon.Compression
 		[HideInInspector]
 		private bool includeChildren = true;
 
-		[Tooltip("Awake/Destroy will considerp element into the world size as long as it exists in the scene (You may need to wake it though). Enable/Disable only factors it in if it is active.")]
+		[Tooltip("Awake/Destroy will consider element into the world size as long as it exists in the scene (You may need to wake it though). Enable/Disable only factors it in if it is active.")]
 		[SerializeField]
 		[HideInInspector]
 		private BoundsTools.BoundsType factorIn = BoundsTools.BoundsType.Both;
