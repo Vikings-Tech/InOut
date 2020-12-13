@@ -13,5 +13,21 @@ MonoBehaviour:
   m_Name: TypeCatalogue
   m_EditorClassIdentifier: 
   catalogue:
-    keys: []
-    vals: []
+    keys:
+    - emotitron.TestPackObject
+    vals:
+    - hashcode: 1161234830446200393
+      filepath: Assets/Photon/PhotonUtilities/PackObject/_GeneratedPackExtensions/Pack_TestPackObject.cs
+      codegenFileWriteTime: 637434888680000000
+      localFieldCount: 2
+      totalFieldCount: 2
+    - hashcode: 1161234830446200393
+      filepath: Assets\Photon\PhotonUtilities\PackObject\_GeneratedPackExtensions\Pack_TestPackObject.cs
+      codegenFileWriteTime: 637434670681691242
+      localFieldCount: 2
+      totalFieldCount: 2
+    - hashcode: 1161234830446200393
+      filepath: Assets/Photon/PhotonUtilities/PackObject/_GeneratedPackExtensions/Pack_TestPackObject.cs
+      codegenFileWriteTime: 637434887490000000
+      localFieldCount: 2
+      totalFieldCount: 2
