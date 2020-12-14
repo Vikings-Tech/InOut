@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028334, g: 0.22571328, b: 0.3069217, a: 1}
+  m_IndirectSpecularColor: {r: 0.4465782, g: 0.49641252, b: 0.5748167, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -416,6 +416,30 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 214978441}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &214978443 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1094192867152195606, guid: f781486b481b6574bb89e5363549eb1e,
+    type: 3}
+  m_PrefabInstance: {fileID: 214978441}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &214978444 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1094192867891977554, guid: f781486b481b6574bb89e5363549eb1e,
+    type: 3}
+  m_PrefabInstance: {fileID: 214978441}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &417133969
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1679,6 +1703,7 @@ GameObject:
   - component: {fileID: 1719954173}
   - component: {fileID: 1719954172}
   - component: {fileID: 1719954174}
+  - component: {fileID: 1719954175}
   m_Layer: 0
   m_Name: SpawnHandler
   m_TagString: Untagged
@@ -1730,6 +1755,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Timer: {fileID: 419806700}
   setup: {fileID: 2025098019}
+--- !u!114 &1719954175
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1719954171}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44f38bf5dfce26e4b81500ed0b2dbdc3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerNameText: {fileID: 214978444}
+  oppNameText: {fileID: 214978443}
 --- !u!1 &1725993774
 GameObject:
   m_ObjectHideFlags: 0

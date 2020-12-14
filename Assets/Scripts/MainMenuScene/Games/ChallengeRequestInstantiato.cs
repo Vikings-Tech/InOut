@@ -9,6 +9,7 @@ public class ChallengeRequestInstantiato : MonoBehaviour
     public GameObject FriendPrefab;
     public Transform FriendContainer;
     public Sprite[] avatars;
+    public MatchCreator creator;
     
     // Start is called before the first frame update
     void Start()
@@ -29,6 +30,6 @@ public class ChallengeRequestInstantiato : MonoBehaviour
         text[1].text = friendInfo.GameName;
         newMessage.GetComponentInChildren<AcceptDenyChallenge>().requestID = friendInfo.UserUID;
         newMessage.GetComponentInChildren<AcceptDenyChallenge>().requestInfo = friendInfo;
-
+        newMessage.GetComponentInChildren<AcceptDenyChallenge>().ChallengeCreator = creator;
     }
 }

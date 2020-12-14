@@ -20,11 +20,9 @@ public class ChallengeFriends : MonoBehaviour
     
     void Start()
     {
-        
         _reference = FirebaseDatabase.DefaultInstance.RootReference;
         _user = FirebaseAuth.DefaultInstance;
         StartCoroutine(GetFriendsList());
-        
     }
 
     
@@ -47,7 +45,7 @@ public class ChallengeFriends : MonoBehaviour
             var newBox = Instantiate(boxPrefab, transform.position, Quaternion.identity);
             newBox.transform.SetParent(boxContainer, false);
             Text[] texts = newBox.GetComponentsInChildren<Text>();
-            texts[0].text = Info[i]["Username"];
+            texts[0].text = Info[i]["Username"];    
             
             newBox.GetComponentInChildren<Image>().sprite = avatarSprites[Int16.Parse(Info[i]["AvatarIndex"])];
             FriendPropertyHolder newProp = newBox.GetComponentInParent<FriendPropertyHolder>();
@@ -76,7 +74,7 @@ public class ChallengeFriends : MonoBehaviour
 
     public void ChallengeRequestSentSuccess()
     {
-        ChallengeCreator.CreateRoom(_user.CurrentUser.UserId, ASRetrieveUserInfo.userName);
+        ChallengeCreator.CreateRoom( _user.CurrentUser.UserId, ASRetrieveUserInfo.userName);
     }
     
     public void SendRequest(string receiver,ChallengeInfo selfInfo, Action callback, Action<AggregateException> fallback)

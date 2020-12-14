@@ -17,7 +17,7 @@ public class ChallengeHandler : MonoBehaviour
     {
         FirebaseApp.DefaultInstance.SetEditorDatabaseUrl("https://gamersgalaxy-4748b-default-rtdb.firebaseio.com/");
         
-        reference = FirebaseDatabase.DefaultInstance.RootReference;
+        reference = FirebaseDatabase.DefaultInstance.RootReference.Child("Challenges").Child(user.CurrentUser.UserId).Child("Requests");
         user = FirebaseAuth.DefaultInstance;
         ChallengeRequestsPanel.transform.localPosition = new Vector3(2*Screen.width,0,0);
     }
@@ -47,6 +47,11 @@ public class ChallengeHandler : MonoBehaviour
         }
         messageListener = CurrentListener;
         
-        reference.Child("Challenges").Child(user.CurrentUser.UserId).Child("Requests").ChildAdded += messageListener;
+        reference.ChildAdded += messageListener;
+    }
+
+    void OnDestroy()
+    {
+        reference.ChildAdded -= messageListener;
     }
 }

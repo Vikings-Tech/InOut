@@ -14,4 +14,24 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/SwipeScene.unity
     guid: 3017ba819a441f047ae41c7043178c72
-  m_configObjects: {}
+  - enabled: 1
+    path: Assets/Scenes/WaitingScene.unity
+    guid: 70714db45cced104882a19ba3f21ecc3
+  - enabled: 1
+    path: Assets/Scenes/DefenseBaseSettingScene.unity
+    guid: abcfbf8b8aa25854a92485ae3b1d35c3
+  - enabled: 1
+    path: Assets/Scenes/AttackBaseSettingScene.unity
+    guid: 1276ab2eb4ee2a94c87d0a045957eeff
+  - enabled: 1
+    path: Assets/Scenes/DefenceBaseAR.unity
+    guid: aced5f6cad2641648b0d96f56df5a566
+  - enabled: 1
+    path: Assets/Scenes/AttackBaseAR.unity
+    guid: 42df6b0faffffb24abe4d845bd89b8c5
+  - enabled: 1
+    path: Assets/Scenes/GameOver.unity
+    guid: 3664b8797f924984a9b509fe8bf116f1
+  m_configObjects:
+    UnityEditor.XR.ARCore.ARCoreSettings: {fileID: 11400000, guid: a043284b12a6dde4994fab97ec8da802,
+      type: 2}

@@ -57,7 +57,7 @@ public class AttackBaseSetup : MonoBehaviourPunCallbacks
         if(GameOver && OpponentGameOver && !switchScene)
         {
             switchScene = true;
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            SceneManager.LoadScene("GameOver");
         }
     }
 

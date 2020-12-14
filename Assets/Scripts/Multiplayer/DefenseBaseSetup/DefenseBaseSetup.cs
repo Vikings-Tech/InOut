@@ -1,12 +1,21 @@
 ﻿using UnityEngine.SceneManagement;
 using UnityEngine;
 
+enum SelectedDefence
+{
+    Wall,
+    Laser,
+    Mortar
+}
+
 public class DefenseBaseSetup : MonoBehaviour
 {
     const float pausedTimeScale = 0f;
     const float playSpeed = 1f;
 
     public bool isReady = false;
+
+    SelectedDefence selectedDefence;
 
     [SerializeField]
     Vector2Int boardSize = new Vector2Int(11, 11);
@@ -31,7 +40,8 @@ public class DefenseBaseSetup : MonoBehaviour
     void Awake()
     {
         board.Initialize(boardSize, tileContentFactory);
-        //board.ShowGrid = true;
+        selectedDefence = 0;
+        Screen.orientation = ScreenOrientation.Landscape;   
     }
 
     void BeginNewGame()
@@ -63,7 +73,8 @@ public class DefenseBaseSetup : MonoBehaviour
         }
         if (Input.GetMouseButtonDown(0))
         {
-            HandleTouch();
+            HandleSelectedTile();
+            //HandleTouch();
         }
         else if (Input.GetMouseButtonDown(1))
         {
@@ -105,6 +116,43 @@ public class DefenseBaseSetup : MonoBehaviour
 
         Physics.SyncTransforms();
         board.GameUpdate();
+    }
+
+    public void SelectWalls()
+    {
+        selectedDefence = 0;
+    }
+
+    public void SelectLaser()
+    {
+        selectedDefence = SelectedDefence.Laser;
+    }
+
+    public void SelectMortar()
+    {
+        selectedDefence = SelectedDefence.Mortar;
+    }
+
+    void HandleSelectedTile()
+    {
+        GameTile tile = board.GetTile(TouchRay);
+        if (tile == null)
+            return;
+        switch ((int)selectedDefence)
+        {
+            case 0:
+                board.ToggleWall(tile);
+                break;
+            case 1:
+                board.ToggleTower(tile,TowerType.Laser);
+                break;
+            case 2:
+                board.ToggleTower(tile, TowerType.Mortar);
+                break;
+            default:
+                Debug.Log("Invalid Tower Type");
+                break;
+        }
     }
 
     void HandleAlternativeTouch()
