@@ -18,12 +18,22 @@ MonoBehaviour:
     vals:
     - hashcode: 1161234830446200393
       filepath: Assets/Photon/PhotonUtilities/PackObject/_GeneratedPackExtensions/Pack_TestPackObject.cs
-      codegenFileWriteTime: 637435733480000000
+      codegenFileWriteTime: 637441746690000000
       localFieldCount: 2
       totalFieldCount: 2
     - hashcode: 1161234830446200393
       filepath: Assets\Photon\PhotonUtilities\PackObject\_GeneratedPackExtensions\Pack_TestPackObject.cs
-      codegenFileWriteTime: 637434910448614071
+      codegenFileWriteTime: 637440200288633805
+      localFieldCount: 2
+      totalFieldCount: 2
+    - hashcode: 1161234830446200393
+      filepath: Assets\Photon\PhotonUtilities\PackObject\_GeneratedPackExtensions\Pack_TestPackObject.cs
+      codegenFileWriteTime: 637440075938152283
+      localFieldCount: 2
+      totalFieldCount: 2
+    - hashcode: 1161234830446200393
+      filepath: Assets/Photon/PhotonUtilities/PackObject/_GeneratedPackExtensions/Pack_TestPackObject.cs
+      codegenFileWriteTime: 637435733480000000
       localFieldCount: 2
       totalFieldCount: 2
     - hashcode: 1161234830446200393

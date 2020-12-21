@@ -49,7 +49,14 @@ public class MatchCreator : MonoBehaviourPunCallbacks
     {
         if (PhotonNetwork.IsConnected)
         {
-            PhotonNetwork.JoinRandomRoom();
+            PhotonNetwork.NickName = username;
+            Debug.Log("Creating Room");
+            PhotonNetwork.JoinOrCreateRoom(roomID, new RoomOptions
+            {
+                MaxPlayers = 2
+            },
+            null,
+            null);
         }
         else
         {

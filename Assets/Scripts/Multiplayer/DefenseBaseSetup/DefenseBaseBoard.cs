@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 public class DefenseBaseBoard : MonoBehaviour
 {
-    int wallCount = 0, laserCount = 0, mortarCount = 0, spawnCount = 0, destCount = 0;
+    public int wallCount = 0, laserCount = 0, mortarCount = 0, spawnCount = 0, destCount = 0;
 
     [SerializeField]
     Transform ground = default;
@@ -13,6 +13,9 @@ public class DefenseBaseBoard : MonoBehaviour
 
     [SerializeField]
     BoardConfig config = default;
+
+    [SerializeField]
+    TowerCountUpdate uiCounter = default;
 
     Vector2Int size;
 
@@ -149,6 +152,7 @@ public class DefenseBaseBoard : MonoBehaviour
                 Debug.Log("Walls Have been maxed out");
             }
         }
+        uiCounter.SetWallText(config.maxWallCount, wallCount);
     }
 
     public void ToggleSpawnPoint(GameTile tile)
@@ -239,6 +243,8 @@ public class DefenseBaseBoard : MonoBehaviour
             tile.Content = contentFactory.Get(towerType);
             updatingContent.Add(tile.Content);
         }
+        uiCounter.SetLaserText(config.maxLaserShooters, laserCount);
+        uiCounter.SetMortarText(config.maxMortarShooters, mortarCount);
     }
 
     public GameTile GetSpawnPoint(int index)

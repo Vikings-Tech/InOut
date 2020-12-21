@@ -70,6 +70,8 @@ public class ChallengeFriends : MonoBehaviour
                 ASRetrieveUserInfo.userName,ASRetrieveUserInfo.currentAvIndex,MMChallengeRequest.gameName,_user.CurrentUser.UserId), 
             ChallengeRequestSentSuccess
             ,Debug.Log);
+        Debug.Log("Challenge Sent");
+
     }
 
     public void ChallengeRequestSentSuccess()

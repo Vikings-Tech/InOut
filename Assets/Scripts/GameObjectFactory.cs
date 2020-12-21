@@ -4,6 +4,7 @@ using UnityEngine.SceneManagement;
 public abstract class GameObjectFactory : ScriptableObject {
 
 	Scene scene;
+    DefenseBaseBoard board;
 
 	protected T CreateGameObjectInstance<T> (T prefab) where T : MonoBehaviour {
 		if (!scene.isLoaded) {
@@ -19,6 +20,7 @@ public abstract class GameObjectFactory : ScriptableObject {
 		}
 		T instance = Instantiate(prefab);
 		SceneManager.MoveGameObjectToScene(instance.gameObject, scene);
+        instance.transform.parent = FindObjectOfType<DefenseBaseBoard>()?.transform;
 		return instance;
 	}
 }

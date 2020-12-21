@@ -61,7 +61,7 @@ public class OpponentWaiter : MonoBehaviourPunCallbacks
         else if (timeLeft < 1f && !levelLoadCalled)
         {
             levelLoadCalled = true;
-            PhotonNetwork.LoadLevel((mode == BoardGameMode.Normal)?"DefenseBaseSettingScene":"DefenseBaseAR");
+            PhotonNetwork.LoadLevel((mode == BoardGameMode.Normal)?"DefenseBaseSettingScene":"DefenceBaseAR");
         }
     }
 
